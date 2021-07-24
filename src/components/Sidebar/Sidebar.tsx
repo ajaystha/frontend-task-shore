@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) =>
       height: '100vh',
     },
     logoContainer: {
-      height: 90,
+      height: 70,
     },
     logo: {
-      width: 150,
+      width: 130,
       height: 'auto',
     },
     divider: {

@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 type UsersToolbarProps = {
-  searchText: string | null;
+  searchText: string;
   onSearchText: (ev: React.ChangeEvent<HTMLInputElement>) => void;
   onClearInput: () => void;
 };

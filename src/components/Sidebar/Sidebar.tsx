@@ -34,7 +34,7 @@ const Sidebar: FC = () => {
       <Box maxWidth="sm" className={classes.root}>
         <Grid
           container
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           item
           xs={12}

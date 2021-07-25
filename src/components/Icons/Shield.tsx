@@ -1,6 +1,6 @@
-import React, { FC, SVGProps } from 'react';
+import React, { SVGProps } from 'react';
 
-const Shield: FC<SVGProps<SVGSVGElement>> = (props) => {
+const Shield = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16" {...props}>
       <path

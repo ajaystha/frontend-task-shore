@@ -1,6 +1,6 @@
-import React, { FC, SVGProps } from 'react';
+import React, { SVGProps } from 'react';
 
-const Invoice: FC<SVGProps<SVGSVGElement>> = (props) => {
+const Invoice = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={13} height={15} viewBox="0 0 13 15" {...props}>
       <path

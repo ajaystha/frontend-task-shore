@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react';
 
-function Search(props: SVGProps<SVGSVGElement>) {
+const Search = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 12 12" {...props}>
       <path
@@ -9,6 +9,6 @@ function Search(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 export default Search;

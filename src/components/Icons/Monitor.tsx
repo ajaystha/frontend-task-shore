@@ -1,6 +1,6 @@
-import React, { FC, SVGProps } from 'react';
+import React, { SVGProps } from 'react';
 
-const Monitor: FC<SVGProps<SVGSVGElement>> = (props) => {
+const Monitor = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

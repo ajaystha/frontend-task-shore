@@ -40,7 +40,7 @@ const Sidebar: FC = () => {
           xs={12}
           className={classes.logoContainer}
         >
-          <Logo className={classes.logo} />
+          <Logo data-testid="header-logo" className={classes.logo} />
         </Grid>
 
         <Divider className={classes.divider} />

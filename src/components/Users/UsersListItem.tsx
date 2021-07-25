@@ -45,6 +45,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface UsersListItemProps extends User {
+  department?: string;
+  phone?: string;
   onClick: (id: number) => void;
 }
 
@@ -75,7 +77,7 @@ const UsersListItem: FC<UsersListItemProps> = (props: UsersListItemProps) => {
       </Grid>
 
       <Grid item xs={2} className={`${classes.gridItem} ${classes.gridItemCenter}`}>
-        <Typography className={classes.text}>Sales</Typography>
+        <Typography className={classes.text}>{props?.department || 'Sales'}</Typography>
       </Grid>
 
       <Grid item xs={3} className={`${classes.gridItem} ${classes.gridItemCenter}`}>
@@ -83,7 +85,7 @@ const UsersListItem: FC<UsersListItemProps> = (props: UsersListItemProps) => {
       </Grid>
 
       <Grid item xs={3} className={`${classes.gridItem} ${classes.gridItemCenter}`}>
-        <Typography className={classes.text}>0305683294136</Typography>
+        <Typography className={classes.text}>{props?.phone || '0305683294136'}</Typography>
       </Grid>
     </Grid>
   );

@@ -1,11 +1,19 @@
 import React, { FC } from 'react';
-import { makeStyles, AppBar, Toolbar, IconButton, Typography, Grid } from '@material-ui/core';
+import {
+  Theme,
+  makeStyles,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Grid,
+} from '@material-ui/core';
 
 import MenuIcon from './Icons/Menu';
 import LockIcon from './Icons/Lock';
 import TriangleDownIcon from './Icons/TriangleDown';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
     backgroundColor: '#fff',
     height: 70,

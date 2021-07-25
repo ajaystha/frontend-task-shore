@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core';
 
 import { Header } from '../components/Header';
 import { Sidebar } from '../components/Sidebar/Sidebar';
+import { Users } from '../pages/Users';
 
 import './App.css';
 
@@ -17,23 +18,21 @@ const App: FC = () => {
       <Grid item xs={10}>
         <Header />
 
-        <div>
-          <Router>
-            <Switch>
-              <Route path="/" exact>
-                <Redirect to="/users" />
-              </Route>
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <Redirect to="/users" />
+            </Route>
 
-              <Route path="/users" exact>
-                Users Page
-              </Route>
+            <Route path="/users" exact>
+              <Users />
+            </Route>
 
-              <Route path="*">
-                <Redirect to="/users" />
-              </Route>
-            </Switch>
-          </Router>
-        </div>
+            <Route path="*">
+              <Redirect to="/users" />
+            </Route>
+          </Switch>
+        </Router>
       </Grid>
     </Grid>
   );

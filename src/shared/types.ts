@@ -14,3 +14,13 @@ export type UsersResponse = {
   total: number;
   total_pages: number;
 };
+
+export type UserFormData = {
+  first_name: string;
+  last_name: string;
+  gender: string;
+  email: string;
+  department: string;
+  contribution: number;
+  active: boolean;
+};

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import { Theme, makeStyles, Grid, TextField, Button } from '@material-ui/core';
 
 import SearchIcon from '../Icons/Search';
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 type UsersToolbarProps = {
   searchText: string;
-  onSearchText: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearchText: (ev: ChangeEvent<HTMLInputElement>) => void;
   onClearInput: () => void;
 };
 

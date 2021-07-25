@@ -8,6 +8,7 @@ import { User } from '../../shared/types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   box: {
+    marginTop: theme.spacing(2),
     padding: theme.spacing(2),
     border: '1px solid #E7E3E3',
   },
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 type UsersListProps = {
   users: User[] | undefined;
   isLoading: boolean;
-  onOpenEditDialog: () => void;
+  onOpenEditDialog: (id: number) => void;
 };
 
 const UsersList: FC<UsersListProps> = (props: UsersListProps) => {

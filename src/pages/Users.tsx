@@ -1,12 +1,23 @@
 import React, { FC, ChangeEvent, useState } from 'react';
 import axios from 'axios';
-import useSWR from 'swr';
-import { Theme, makeStyles, Container } from '@material-ui/core';
+import useSWR, { mutate } from 'swr';
+import {
+  Theme,
+  makeStyles,
+  Container,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  Typography,
+  IconButton,
+} from '@material-ui/core';
 
 import { UsersToolbar } from '../components/Users/UsersToolbar';
 import { UsersList } from '../components/Users/UsersList';
+import { UserForm } from '../components/Users/UserForm';
+import CloseIcon from '../components/Icons/Close';
 
-import { User } from '../shared/types';
+import { User, UserFormData } from '../shared/types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -17,6 +28,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(2),
     border: '1px solid #E7E3E3',
   },
+  dialogCloseButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    width: 40,
+    height: 40,
+  },
 }));
 
 const USERS_ENDPOINT = 'https://reqres.in/api/users';
@@ -24,6 +42,7 @@ const USERS_ENDPOINT = 'https://reqres.in/api/users';
 const Users: FC = () => {
   const classes = useStyles();
 
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [searchText, setSearchText] = useState<string>('');
 
   const { data, isValidating } = useSWR(USERS_ENDPOINT, loadUsers);
@@ -34,17 +53,32 @@ const Users: FC = () => {
       const { data } = await axios.get<{ data: User[] }>(USERS_ENDPOINT);
 
       return data.data;
-    } catch (e) {
-      const errorMessage = e.response?.data?.error?.message || e.message;
-
-      throw new Error(errorMessage);
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
-  // const updateUsers = async () => {};
+  const updateUsers = async (id: number | undefined, formData: UserFormData) => {
+    if (!id) return;
 
-  const openEditDialog = () => {
-    console.log('opening');
+    try {
+      await axios.put(`${USERS_ENDPOINT}/${id}`, formData);
+
+      mutate(USERS_ENDPOINT);
+      setSelectedUser(null);
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
+  const openEditDialog = (userId: number): void => {
+    const selected = users?.find((usr) => usr.id === userId) || null;
+
+    setSelectedUser(selected);
+  };
+
+  const closeEditDialog = () => {
+    setSelectedUser(null);
   };
 
   const filteredUsers = (): User[] | undefined => {
@@ -69,6 +103,25 @@ const Users: FC = () => {
 
   return (
     <>
+      <Dialog open={!!selectedUser} onClose={closeEditDialog} aria-labelledby="user-edit-dialog">
+        <DialogTitle id="user-edit-dialog-title" style={{ borderBottom: '1px solid #ccc' }}>
+          <Typography>
+            {`Edit contact "${selectedUser?.first_name} ${selectedUser?.last_name} "`}
+          </Typography>
+          <IconButton
+            aria-label="close"
+            className={classes.dialogCloseButton}
+            onClick={closeEditDialog}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+
+        <DialogContent>
+          <UserForm user={selectedUser} onUpdate={updateUsers} onCancel={closeEditDialog} />
+        </DialogContent>
+      </Dialog>
+
       <Container maxWidth="xl" className={classes.container}>
         <UsersToolbar
           searchText={searchText}

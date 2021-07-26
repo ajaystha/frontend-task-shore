@@ -11,7 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [swr](https://swr.vercel.app/): library for data fetching
 - [Material-UI](https://material-ui.com/): React UI component library
 
-### Getting started
+## Getting started
 
 - Clone the project with git: `git clone https://github.com/ajaystha/frontend-task-shore.git`
 - Inside the project directory run `yarn install` to install dependencies

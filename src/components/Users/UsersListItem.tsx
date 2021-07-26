@@ -52,12 +52,14 @@ interface UsersListItemProps extends User {
 
 const UsersListItem: FC<UsersListItemProps> = (props: UsersListItemProps) => {
   const { id, avatar, first_name, last_name, email, onClick } = props;
-  const fullName = `${first_name} ${last_name}`;
 
   const classes = useStyles();
 
+  const fullName = `${first_name} ${last_name}`;
+
   return (
     <Grid
+      data-testid="user-item-list"
       container
       className={classes.root}
       alignItems="stretch"
@@ -68,7 +70,7 @@ const UsersListItem: FC<UsersListItemProps> = (props: UsersListItemProps) => {
         <List dense={true} disablePadding>
           <ListItem alignItems="center">
             <ListItemAvatar>
-              <Avatar alt={fullName} src={avatar} />
+              <Avatar data-testid="user-avatar" alt={fullName} src={avatar} />
             </ListItemAvatar>
 
             <ListItemText primary={fullName} secondary={null} />

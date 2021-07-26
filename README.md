@@ -1,6 +1,15 @@
 # Getting Started with Create React App
 
+Frontend task for SHORE in ReactJS(TS)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Libraries used
+
+- [react-router](https://reactrouter.com/web/guides/quick-start): manage routing in the app
+- [axios](https://https://axios-http.com/): manage api calls
+- [swr](https://swr.vercel.app/): library for data fetching
+- [Material-UI](https://material-ui.com/): React UI component library
 
 ## Available Scripts
 
